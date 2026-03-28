@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #9d9d9d;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    display: flex;
+    width: 820px;
+    height: 480px;
+    background-color: #595959;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* BAGIAN KIRI */
+.login-left {
+    width: 48%;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 5; /* Pastikan di atas curve */
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Memusatkan logo dan teks terhadap form */
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 240px; /* Menyesuaikan lebar input */
+}
+
+.mini-logo {
+    width: 60px; /* Ukuran icon proporsional */
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center; /* Memastikan form di tengah kiri */
+}
+
+/* Update CSS untuk Input */
+.login-form input {
+    width: 100%;
+    max-width: 240px;
+    padding: 14px;
+    border: 2px solid transparent; /* Tambahkan border transparan agar tidak goyang saat fokus */
+    border-radius: 12px;
+    background-color: #a3a3a3;
+    color: #333;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease; /* Efek transisi halus */
+}
+
+.login-form input:focus {
+    background-color: #c0c0c0; /* Sedikit lebih terang saat diklik */
+    border-color: #ffffff; /* Border putih saat aktif */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Efek glowing tipis */
+    transform: translateY(-2px); /* Sedikit terangkat */
+}
+
+.btn-submit {
+    width: 100%;
+    max-width: 140px;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a3a3a3;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* BAGIAN KANAN & CURVE */
+.login-right {
+    width: 52%;
+    background-color: #cccccc;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.white-curve {
+    position: absolute;
+    left: -70px;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background-color: #cccccc;
+    clip-path: ellipse(75% 100% at 100% 50%);
+}
+
+.player-img {
+    width: 85%; /* Ukuran diperbesar agar pas dengan kartu */
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(-5px 10px 15px rgba(0,0,0,0.2));
+    /* Menghilangkan absolute agar flexbox yang mengatur posisi tengahnya */
+}
