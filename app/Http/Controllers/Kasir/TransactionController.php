@@ -11,6 +11,7 @@ use App\Services\BookingService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Helper\LogHelper;
 
 class TransactionController extends Controller
 {
@@ -88,7 +89,7 @@ class TransactionController extends Controller
                 $detail->update(['status' => 'finished']);
 
                 // LOGGING
-                LogHelper::store('Pelunasan', "Pelunasan transaksi {$transaction->kode_invoice} (Rp ".number_format($request->amount_paid).")");
+                // LogHelper::store('Pelunasan', "Pelunasan transaksi {$transaction->kode_invoice} (Rp ".number_format($request->amount_paid).")");
 
                 DB::commit();
                 return redirect()->route('kasir.fields.show', $field->id)->with('success', 'Pelunasan Berhasil!');
@@ -168,7 +169,7 @@ class TransactionController extends Controller
             ]);
 
             // LOGGING
-            LogHelper::store('Transaksi Baru', "Booking oleh {$transaction->customer_name} Lapangan {$field->name} ({$paymentStatus})");
+            // LogHelper::store('Transaksi Baru', "Booking oleh {$transaction->customer_name} Lapangan {$field->name} ({$paymentStatus})");
 
             DB::commit();
             return redirect()->route('kasir.transaksi.cetak', $transaction->id);
