@@ -8,10 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
-        $todayTransactions = Transaction::whereDate('created_at', now())->count();
+   // File: App\Http\Controllers\Kasir\DashboardController.php (atau sejenisnya)
 
-        return view('kasir.dashboard', compact('todayTransactions'));
-    }
+public function index()
+{
+    // 1. Hitung Total Sewa Lapang Hari Ini (Jumlah Transaksi)
+    $totalSewaHariIni = \App\Models\Transaction::whereDate('created_at', now())
+                        ->count();
+
+    // 2. Hitung Total Pendapatan (Sum dari amount_paid agar akurat dengan uang yang masuk)
+    // Kita gunakan amount_paid karena ada sistem DP dan Pelunasan di controller Anda
+    $totalPendapatan = \App\Models\Transaction::sum('amount_paid');
+
+    return view('kasir.dashboard', compact('totalSewaHariIni', 'totalPendapatan'));
+}
 }

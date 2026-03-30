@@ -91,12 +91,17 @@ class TransactionController extends Controller
                 // LOGGING
                 // LogHelper::store('Pelunasan', "Pelunasan transaksi {$transaction->kode_invoice} (Rp ".number_format($request->amount_paid).")");
 
-                DB::commit();
-                return redirect()->route('kasir.fields.show', $field->id)->with('success', 'Pelunasan Berhasil!');
-            } catch (\Exception $e) {
-                DB::rollBack();
-                return back()->with('error', 'Gagal pelunasan: ' . $e->getMessage());
-            }
+               DB::commit();
+        
+        // UBAH BAGIAN INI:
+        // Dari yang sebelumnya redirect ke fields.show, ubah ke cetak struk
+        return redirect()->route('kasir.transaksi.cetak', $transaction->id)
+                         ->with('success', 'Pelunasan Berhasil!');
+                         
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->with('error', 'Gagal pelunasan: ' . $e->getMessage());
+    }
         }
 
         // ================= BOOKING BARU =================

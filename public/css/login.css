@@ -2,11 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif; /* Menggunakan font yang lebih elegan */
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #9d9d9d;
+    /* Background luar: Abu-abu gelap ke terang */
+    background: radial-gradient(circle, #4a4a4a 0%, #2b2b2b 100%);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,114 +16,179 @@ body {
 
 .login-card {
     display: flex;
-    width: 820px;
-    height: 480px;
-    background-color: #595959;
+    width: 900px;
+    height: 550px;
+    /* Sisi kiri: Gradasi Abu-abu Metalik */
+    background: linear-gradient(135deg, #757575 0%, #3a3a3a 100%);
     border-radius: 40px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
     overflow: hidden;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-/* BAGIAN KIRI */
-.login-left {
-    width: 48%;
-    padding: 60px;
+/* SISI KIRI (AREA GAMBAR) */
+.login-image-section {
+    flex: 1;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    z-index: 5; /* Pastikan di atas curve */
+    justify-content: space-between;
+    z-index: 1;
 }
 
-.logo-wrapper {
+.logo-top-left {
     display: flex;
     align-items: center;
-    justify-content: center; /* Memusatkan logo dan teks terhadap form */
-    gap: 10px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 240px; /* Menyesuaikan lebar input */
+    gap: 12px;
 }
 
-.mini-logo {
-    width: 60px; /* Ukuran icon proporsional */
-    height: auto;
-    object-fit: contain;
+.mini-logo { 
+    width: 35px; 
+    filter: brightness(0) invert(1); /* Membuat logo jadi putih agar kontras */
 }
 
-.logo-text {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: nowrap;
+.logo-text { 
+    font-weight: 700; 
+    font-size: 20px; 
+    color: #D4AF37; /* Warna Emas untuk Teks Logo */
+    letter-spacing: 1px;
 }
 
-.login-form {
+.image-container {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center; /* Memastikan form di tengah kiri */
+    justify-content: center;
+    align-items: center;
 }
 
-/* Update CSS untuk Input */
+.image-circle {
+    width: 280px;
+    height: 280px;
+    background: rgba(212, 175, 55, 0.1); /* Glow emas tipis di belakang gambar */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #D4AF37; /* Border Emas pada lingkaran gambar */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.player-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.copyright { 
+    font-size: 11px; 
+    color: #bbb; 
+    text-align: left;
+}
+
+/* SISI KANAN (AREA FORM) */
+.login-form-section {
+    flex: 1.1;
+    background-color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+}
+
+/* Curve Elips di sisi kiri form */
+.white-curve {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.form-wrapper {
+    width: 70%;
+    z-index: 2;
+}
+
+.tabs {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.tab {
+    font-weight: 600;
+    color: #999;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.tab.active {
+    color: #D4AF37; /* Emas saat aktif */
+    border-bottom: 3px solid #D4AF37;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    font-size: 13px;
+    color: #757575; /* Abu-abu untuk label */
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
 .login-form input {
     width: 100%;
-    max-width: 240px;
-    padding: 14px;
-    border: 2px solid transparent; /* Tambahkan border transparan agar tidak goyang saat fokus */
-    border-radius: 12px;
-    background-color: #a3a3a3;
-    color: #333;
-    text-align: center;
-    font-size: 14px;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 10px 0;
     outline: none;
-    transition: all 0.3s ease; /* Efek transisi halus */
+    font-size: 15px;
+    color: #333;
+    background: transparent;
+    transition: 0.4s;
 }
 
 .login-form input:focus {
-    background-color: #c0c0c0; /* Sedikit lebih terang saat diklik */
-    border-color: #ffffff; /* Border putih saat aktif */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Efek glowing tipis */
-    transform: translateY(-2px); /* Sedikit terangkat */
+    border-bottom: 2px solid #D4AF37; /* Garis emas saat fokus */
 }
 
 .btn-submit {
     width: 100%;
-    max-width: 140px;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 14px;
+    background: linear-gradient(to right, #D4AF37, #B8860B); /* Gradasi Emas */
     border: none;
-    border-radius: 10px;
-    background-color: #a3a3a3;
-    color: #333;
-    font-weight: 600;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
     cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* BAGIAN KANAN & CURVE */
-.login-right {
-    width: 52%;
-    background-color: #cccccc;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(212, 175, 55, 0.4);
 }
 
-.white-curve {
-    position: absolute;
-    left: -70px;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    background-color: #cccccc;
-    clip-path: ellipse(75% 100% at 100% 50%);
+.switch-link {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 13px;
+    color: #D4AF37;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-.player-img {
-    width: 85%; /* Ukuran diperbesar agar pas dengan kartu */
-    height: auto;
-    z-index: 10;
-    filter: drop-shadow(-5px 10px 15px rgba(0,0,0,0.2));
-    /* Menghilangkan absolute agar flexbox yang mengatur posisi tengahnya */
+.switch-link:hover {
+    text-decoration: underline;
 }

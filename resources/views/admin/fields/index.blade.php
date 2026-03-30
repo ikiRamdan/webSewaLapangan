@@ -21,8 +21,8 @@
                 <th>No</th>
                 <th>Foto</th>
                 <th>Nama Lapangan</th>
-                <th>Harga Siang</th>
-                <th>Harga Malam</th>
+                <th>Harga Sewa Siang Hari</th>
+                <th>Harga Sewa Malam Hari</th>
                 <th>Status</th>
                 <th style="text-align: center">Aksi</th>
             </tr>

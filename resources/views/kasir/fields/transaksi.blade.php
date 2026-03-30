@@ -32,34 +32,35 @@
         {{-- ========================
             MODE PELUNASAN
         ======================== --}}
-        @if(isset($mode) && $mode == 'pelunasan' && $detail)
+      {{-- MODE PELUNASAN --}}
+@if(isset($mode) && $mode == 'pelunasan' && $detail)
 
-            @php
-                $transaction = $detail->transaction;
-                $sisa = $detail->subtotal - $transaction->amount_paid;
-            @endphp
+    @php
+        $transaction = $detail->transaction;
+        $sisa = $detail->subtotal - $transaction->amount_paid;
+    @endphp
 
-            <input type="hidden" name="mode" value="pelunasan">
-            <input type="hidden" name="detail_id" value="{{ $detail->id }}">
+    <input type="hidden" name="mode" value="pelunasan">
+    <input type="hidden" name="detail_id" value="{{ $detail->id }}">
 
-            <div class="form-group">
-                <label>Nama Customer</label>
-                <input type="text" value="{{ $transaction->customer_name }}" readonly>
-            </div>
+    <div class="form-group">
+        <label>Nama Customer</label>
+        <input type="text" value="{{ $transaction->customer_name }}" readonly style="background: #525252;">
+    </div>
 
-            <div class="form-group">
-                <label>Sisa Pembayaran</label>
-                <input type="text" value="Rp {{ number_format($sisa) }}" readonly>
-            </div>
+    <div class="form-group">
+        <label>Sisa Pembayaran</label>
+        <input type="text" value="Rp {{ number_format($sisa) }}" readonly style="background: #525252; color: #e76868; font-weight: bold;">
+    </div>
 
-            <div class="form-group">
-                <label>Nominal Pelunasan</label>
-                <input type="number" name="amount_paid" value="{{ $sisa }}" readonly>
-            </div>
+    <div class="form-group">
+        <label>Nominal Pelunasan</label>
+        <input type="number" name="amount_paid" value="{{ $sisa }}" readonly style="background: #525252;">
+    </div>
 
-            <button type="submit" class="btn-transaksi">
-                KONFIRMASI PELUNASAN
-            </button>
+    <button type="submit" class="btn-transaksi" style="background: linear-gradient(to right, #D4AF37, #B8860B); color: white; border: none;">
+        KONFIRMASI PELUNASAN & CETAK STRUK
+    </button>
 
         @else
 
